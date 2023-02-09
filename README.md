@@ -1,6 +1,4 @@
-<p align="left"><img src="https://github.com/LMC0705/scRCA/blob/main/scRCA_log.png" width="50" height="50"></p>
-
-# scRCA
+<p align="left"><img src="https://github.com/LMC0705/scRCA/blob/main/scRCA_log.png" width="250" height="100"></p>
 
 A Siamese network-based pipeline for the annotation of cell types using imperfect single-cell RNA-seq reference data
 
