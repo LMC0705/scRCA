@@ -1,6 +1,6 @@
-<p align="left"><img src="https://github.com/LMC0705/scRCA/blob/main/scRCA_log.png" width="50" height="50"></p>
+<p align="left"><img src="https://github.com/LMC0705/scRCA/blob/main/scRCA_log.png" width="250" height="100"></p>
 
-# scRCA
+![Python Versions](https://img.shields.io/badge/python-3.6+-brightgreen.svg)
 
 A Siamese network-based pipeline for the annotation of cell types using imperfect single-cell RNA-seq reference data
 
@@ -14,8 +14,12 @@ pip install scanpy=1.7.2
 pip install torch=1.7.2
 pip install lime=0.1.1.36
 ```
+# Introduction
+The reference dataset and query dataset contained in Data are derived from Immune Cell Dataset(https://www.tissueimmunecellatlas.org/)]
+
 # Interactive tutorials
 
+They will be coming soon.....
 
 
 # Contact
