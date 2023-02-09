@@ -1,4 +1,4 @@
-<p align="left"><img src="https://github.com/LMC0705/scRCA/tree/main/doc/log_image/scRCA_log.png" width="15" height="15"></p>
+<p align="left"><img src="https://github.com/LMC0705/scRCA/blob/main/scRCA_log.png" width="50" height="50"></p>
 
 # scRCA
 
