@@ -24,6 +24,21 @@ pip install ./packages/scRCA-0.1.0.tar.gz
 The reference dataset and query dataset contained in Data are derived from Immune Cell Dataset(https://www.tissueimmunecellatlas.org/)]
 The benchmark datasets can be downloaded from https://hub.docker.com/u/scrnaseqbenchmark
 
+#Useage
+```console
+import scanpy as sc
+####################load data###############
+refer=sc.read_h5ad("./data/refer_data.h5ad")
+refer_data=refer.X
+refer_label=refer.obs["celltype"]
+
+query=sc.read_h5ad("./data/query_data.h5ad")
+query_data=query.X
+query_label=query.obs["celltype"]
+
+##########annotatie the query dataset#########################
+predict_label=scRCA.annotate(refer_data,refer_label,query_data)
+```
 
 # Contact
 Please contact us if you have any questions: liuyan@njust.edu.cn
