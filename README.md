@@ -27,6 +27,7 @@ The benchmark datasets can be downloaded from https://hub.docker.com/u/scrnaseqb
 #Use
 ```console
 import scanpy as sc
+import 
 ####################load data###############
 refer=sc.read_h5ad("./data/refer_data.h5ad")
 refer_data=refer.X
