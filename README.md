@@ -22,6 +22,7 @@ pip install ./packages/scRCA-0.1.0.tar.gz
 
 # Introduction
 The reference dataset and query dataset contained in Data are derived from Immune Cell Dataset(https://www.tissueimmunecellatlas.org/)]
+The benchmark datasets can be downloaded from https://hub.docker.com/u/scrnaseqbenchmark
 
 # Interactive tutorials
 
