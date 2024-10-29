@@ -11,7 +11,8 @@ Accurate cell type annotation is a critical step in single-cell transcriptomic (
 
 **scRCA** is a Siamese network-based pipeline designed to accurately annotate cell types, even with imperfect reference data. To enhance trustworthiness, scRCA includes an interpreter to explore the factors behind model predictions, and it also incorporates three noise-robust loss-based methods to improve annotation accuracy. Benchmarking experiments demonstrate that scRCA outperforms existing methods in accuracy and can overcome batch effects across various scRNA-seq techniques.
 
-<p align="center">< img src="https://github.com/LMC0705/scRCA/blob/main/figure.png" width="600"></p >
+<img src="https://github.com/LMC0705/scRCA/blob/main/figure.png" alt="figure" width="600"/>
+
 
 ---
 
