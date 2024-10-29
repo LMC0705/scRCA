@@ -1,4 +1,4 @@
-<p align="left">< img src="https://github.com/LMC0705/scRCA/blob/main/scRCA_log.png" width="250" height="100"></p >
+<p align="left">< img src="[https://github.com/LMC0705/scRCA/blob/main/scRCA_log.png](https://github.com/LMC0705/scRCA/blob/main/scRCA_log.png)" width="250" height="100"></p >
 
 ![Python Versions](https://img.shields.io/badge/python-3.6+-brightgreen.svg)
 
