@@ -1,45 +1,83 @@
-<p align="left"><img src="https://github.com/LMC0705/scRCA/blob/main/scRCA_log.png" width="250" height="100"></p>
+<p align="left">< img src="https://github.com/LMC0705/scRCA/blob/main/scRCA_log.png" width="250" height="100"></p >
 
 ![Python Versions](https://img.shields.io/badge/python-3.6+-brightgreen.svg)
 
-A Siamese network-based pipeline for the annotation of cell types using imperfect single-cell RNA-seq reference data
+# scRCA: A Siamese Network-based Pipeline for Cell Type Annotation Using Imperfect scRNA-seq Reference Data
 
-# Abstract
-A critical step in the analysis of single-cell transcriptomic (scRNA-seq) data is the accurate identification and annotation of cell types. Such annotation is usually conducted by comparative analysis with known (reference) data sets – which assumes an accurate representation of cell types within the reference sample. However, this assumption is often incorrect, because factors, such as human errors in the laboratory or in silico, and methodological limitations, can ultimately lead to annotation errors in a reference dataset. As current pipelines for single-cell transcriptomic analysis do not adequately consider this challenge, there is a major demand for a computational pipeline that achieves high-quality cell type annotation using imperfect reference datasets that contain inherent errors (often referred to as “noise”). Here, we built a Siamese network-based pipeline, termed scRCA, that achieves an accurate annotation of cell types employing imperfect reference data. For researchers to decide whether to trust the scRCA annotations, an interpreter was developed to explore the factors on which the scRCA model makes its predictions. We also implemented 3 noise-robust losses-based cell type methods to improve the accuracy using imperfect dataset. Benchmarking experiments showed that scRCA outperforms the proposed noise-robust loss-based methods and methods commonly in use for cell type annotation using imperfect reference data. Importantly, we demonstrate that scRCA can overcome batch effects induced by distinctive single cell RNA-seq techniques. 
-![image](https://github.com/LMC0705/scRCA/blob/main/figure.png)
+---
 
-# Requirement:
-```console
-pip install scanpy=1.7.2
-pip install torch=1.7.2
-pip install lime=0.1.1.36
+## 📜 Abstract
+Accurate cell type annotation is a critical step in single-cell transcriptomic (scRNA-seq) data analysis, typically relying on comparisons with reference datasets. However, reference datasets are often imperfect due to various factors, including laboratory and methodological errors, which can lead to annotation inaccuracies. Current analysis pipelines for scRNA-seq data do not fully address these issues, creating a need for a robust computational pipeline that can effectively handle noisy reference datasets.
+
+**scRCA** is a Siamese network-based pipeline designed to accurately annotate cell types, even with imperfect reference data. To enhance trustworthiness, scRCA includes an interpreter to explore the factors behind model predictions, and it also incorporates three noise-robust loss-based methods to improve annotation accuracy. Benchmarking experiments demonstrate that scRCA outperforms existing methods in accuracy and can overcome batch effects across various scRNA-seq techniques.
+
+<p align="center">< img src="https://github.com/LMC0705/scRCA/blob/main/figure.png" width="600"></p >
+
+---
+
+## 📦 Requirements
+
+To install necessary packages, run:
+```bash
+pip install scanpy==1.7.2 torch==1.7.2 lime==0.1.1.36
 ```
-# Install scRCA
-### Using pip 
-```console
+
+---
+
+## 🚀 Installation
+
+### Option 1: Install via pip
+```bash
 pip install ./packages/scRCA-0.1.0.tar.gz
 ```
 
-# Datasets
-The reference dataset and query dataset contained in Data are derived from Immune Cell Dataset(https://www.tissueimmunecellatlas.org/)]
-The benchmark datasets can be downloaded from https://hub.docker.com/u/scrnaseqbenchmark
+### Option 2: Direct Installation (Recommended)
+Since scRCA is designed with a simple network architecture, it can be easily used by cloning the repository locally:
+```bash
+git clone https://github.com/LMC0705/scRCA.git
+```
+You can then directly annotate query cells using the quick start guide below.
 
-#Use
-```console
+---
+
+## 📊 Datasets
+The reference and query datasets are available in the `Data` folder, sourced from the [Immune Cell Dataset](https://www.tissueimmunecellatlas.org/). Additional benchmark datasets can be downloaded from [scrnaseqbenchmark on DockerHub](https://hub.docker.com/u/scrnaseqbenchmark).
+
+---
+
+## ⚡ Quick Start Guide
+
+```python
 import scanpy as sc
-import 
-####################load data###############
-refer=sc.read_h5ad("./data/refer_data.h5ad")
-refer_data=refer.X
-refer_label=refer.obs["celltype"]
+from Annotation import scRCA_annotate
 
-query=sc.read_h5ad("./data/query_data.h5ad")
-query_data=query.X
-query_label=query.obs["celltype"]
+# Load reference and query datasets
+Ref_data_path = "./data/refer_data.h5ad"
+Query_data_path = "./data/query_data.h5ad"
 
-##########annotatie the query dataset#########################
-predict_label=scRCA.annotate(refer_data,refer_label,query_data)
+# Annotate the query dataset
+query_data = scRCA_annotate(
+    Ref_data_path, Query_data_path,
+    learning_rate=0.01, n_epoch=20, noise_rate=0.45,
+    forget_rate=0.35, pretrain_epochs=30
+)
+pred_cell_type = query_data.obs['predicted_cell_types']
 ```
 
-# Contact
-Please contact us if you have any questions: liuyan@njust.edu.cn
+### Parameter Descriptions:
+- **`learning_rate`**: Learning rate for the optimizer.
+- **`n_epoch`**: Number of epochs for main training.
+- **`noise_rate`**: Expected noise level in the reference dataset; represents the proportion of mislabeled data.
+- **`forget_rate`**: Controls the rate at which noisy labels are ignored.
+- **`pretrain_epochs`**: Epochs for the initial pretraining phase.
+
+These parameters can be adjusted within `scRCA_annotate`, providing flexibility to configure the annotation process.
+
+---
+
+## 📞 Contact
+For questions or support, please contact: **008474@yzu.edu.cn**
+
+--- 
+
+This README provides a streamlined, easy-to-follow introduction to scRCA, helping researchers get started with single-cell data annotation using the power of Siamese networks and noise-robust learning.
